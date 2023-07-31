@@ -1,0 +1,163 @@
+// URL base da API
+const baseUrl = "http://localhost:3001/catalago";
+let json = null;
+
+async function carregarJSON() {
+  try {
+    const response = await fetch(baseUrl);
+    if (response.ok) {
+      return await response.json();
+    } else if (response.status === 404) {
+      console.warn("Api não encontrada");
+      return [];
+    } else {
+      console.error("Erro ao carregar o Json da Api. Status", response.status);
+      return null;
+    }
+  } catch (error) {
+    console.error("Erro ao carregar os dados", error);
+    return null;
+  }
+}
+
+//Gera id
+function geraId(){
+  return Math.random().toString(36).substring(2,9);
+}
+//Verificar se o id existe
+function idJaExiste(id){
+  return json.some(item => item.id === id);
+}
+
+
+async function adicionarItem() {
+  // Obtenha os valores dos campos do formulário
+  const id = document.getElementById("idP").value;
+  const nome = document.getElementById("nomeP").value;
+  const foto = document.getElementById("fotoP").value;
+  const descricao = document.getElementById("descricaoP").value;
+  const tamanhoP = document.getElementById("tamanhoP").value;
+  //verificar se o id exite ,e cria um 
+  let novoId =id
+  while (idJaExiste(novoId)){
+    novoId = geraId();
+  }
+
+  // Crie um objeto com os dados do novo item
+  const novoItem = {
+    id: novoId,
+    nome: nome,
+    foto: foto,
+    descricao: descricao,
+    elenco: tamanhoP,
+  };
+
+  // Envie o novo item para a API usando o método "POST"
+  try {
+    const response = await fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(novoItem),
+    });
+
+    if (response.ok) {
+      console.log("Novo item adicionado com sucesso!");
+      // Se o item foi adicionado com sucesso, você pode atualizar a lista de itens ou fazer outras ações aqui.
+    } else {
+      console.error("Erro ao adicionar o novo item. Status:", response.status);
+    }
+  } catch (error) {
+    console.error("Erro ao adicionar o novo item:", error);
+  }
+}
+
+// Evento ao enviar o formulário
+document.getElementById("jsonForm").addEventListener("submit", async function (event) {
+  event.preventDefault();
+  await adicionarItem();
+  // Recarregar a lista após adicionar um novo item
+  json = await carregarJSON();
+  // Restante do código
+});
+
+
+
+
+/////////////////////////////////////////
+novo
+// URL base da API
+const baseUrl = "http://localhost:3001/catalago";
+import { initializeApp } from '/firebase/app';
+import { getStorage, ref, uploadBytes } from '/firebase/storage';
+
+ var firebaseConfig = {
+  apiKey: "AIzaSyD3V_anGjTqKW8omIX3c6zTIPsGTXGoUbs",
+  authDomain: "catalogo-4d516.firebaseapp.com",
+  projectId: "catalogo-4d516",
+  storageBucket: "catalogo-4d516.appspot.com",
+  messagingSenderId: "104117404586",
+  appId: "1:104117404586:web:4268e07e1b16197de821d3"
+};
+const app =initializeApp(firebaseConfig);
+const storage =  getStorage(app);
+
+console.log("okk")
+// Função para enviar o novo item para a API
+async function adicionarItem() {
+  // Obtenha os valores dos campos do formulário
+  const id = document.getElementById("idP").value;
+  const nome = document.getElementById("nomeP").value;
+  const fotoInput = document.getElementById("fotoP");
+  const fotoArquivo = fotoInput.files[0];
+  const descricao = document.getElementById("descricaoP").value;
+  const tamanhoP = document.getElementById("tamanhoP").value;
+
+  // Crie um objeto com os dados do novo item
+  const novoItem = {
+    id: id,
+    nome: nome,
+    descricao: descricao,
+    elenco: tamanhoP,
+  };
+
+  if (fotoArquivo) {
+    const storageRef = ref(storage, `imagens/${id}.jpg`);
+    try {
+      const snapshot = await uploadBytes(storageRef, fotoArquivo);
+      const fotoURL = await snapshot.ref.getDownloadURL();
+      novoItem.foto = fotoURL;
+    } catch (error) {
+      console.error("Error ao fazer o upload da imagem:", error);
+      return;
+    }
+  }
+
+  // Envie o novo item para a API usando o método "POST"
+  try {
+    const response = await fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(novoItem),
+    });
+
+    if (response.ok) {
+      console.log("Novo item adicionado com sucesso!");
+      // Se o item foi adicionado com sucesso, você pode atualizar a lista de itens ou fazer outras ações aqui.
+    } else {
+      console.error("Erro ao adicionar o novo item. Status:", response.status);
+    }
+  } catch (error) {
+    console.error("Erro ao adicionar o novo item:", error);
+  }
+}
+
+// Evento ao enviar o formulário
+document.getElementById("jsonForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Evita o envio tradicional do formulário
+  adicionarItem(); // Chama a função para enviar o novo item para a API
+});
+

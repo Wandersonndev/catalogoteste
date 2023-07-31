@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionart</title>
+
+  
+</head>
+<body>
+  
+  <div>
+    <form id="jsonForm">
+      <input type="text" id="idP" name="idP" readonly><br>
+      <input type="text" id="nomeP" name="nomeP" placeholder="nome"><br>
+      <input type="file" id="fotoU" name="fotoU" accept="image/*" onchange="converterImagem()"> <br>
+      <input type="text" id="fotoP" name="fotoP"  readonly ><br>
+      <textarea id="descricaoP" name="descricaoP" placeholder="descriçâo"></textarea><br>
+      <input type="text" id="tamanhoP" name="tamanhoP" placeholder="tamanhoP"><br>
+      <input type="submit" value="Salvar">
+    </form>
+    <div id="apresentarimg"></div>
+     
+  </div>
+  <script type="module" src="adicionar.js" ></script>
+  <script src="foto64.js"></script>
+</body>
+</html>
