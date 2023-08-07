@@ -5,23 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<script type="module" src="js/firebaseadmin.js"></script>
 <body>
-  <h1>Catalago</h1><br>
-  <input type="button" value="Adicionar" onclick="submit()">
-  <div id="Catalago"></div>
-  <form id="jsonForm">
-    <input type="text" id="id" name="id"><br>
-    <input type="text" id="nome" name="nome" placeholder="nome"><br>
-    <input type="text" id="foto" name="foto" placeholder="link da foto"> <br>
-    <textarea id="descricao" name="descricao" placeholder="descriçâo"></textarea><br>
-    <input type="text" id="elenco" name="elenco" placeholder="elenco"><br>
-    <input type="submit" value="Salvar">
-  </form>
-    <script src="admin.js"></script>
-    <script>
-      function submit() {
-        window.location.href = "adicionar.html"
-      }
-    </script>
+  <input type="button" value="adicionar" onclick="submit()">
+  <script>
+    function submit(){
+      window.location.href = "adicionar.html"
+    }
+  </script>
 </body>
 </html>

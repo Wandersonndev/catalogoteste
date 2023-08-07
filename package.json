@@ -1,25 +1,15 @@
 {
-  "name": "frontend",
+  "name": "123",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Wandersonndev/Catalogo.git"
-  },
-  "keywords": [
-    "frontend"
-  ],
-  "author": "Wanderson",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Wandersonndev/Catalogo/issues"
-  },
-  "homepage": "https://github.com/Wandersonndev/Catalogo#readme",
   "dependencies": {
-    "firebase": "10.1.0"
+    "firebase": "7.0",
+    "grpc": "1.23.3"
   }
 }

@@ -4,20 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  
 </head>
+<link rel="stylesheet" href="css/index.css">
+<script type="module" src="js/index.js"></script>
+<script src="js/select.js"></script>
 <body>
-  <head>
-    <input type="button" value="teste" onclick="teste()">
-  </head>
-  <nav></nav>
-  <main></main>
-  <footer></footer>
-  <div id="Catalago"></div>
-  <script src="index.js"></script>
+  <header>
+    <div class="title"> <h1>Liz Tiernan Lingerie</h1></div>
+    <div class="imgdiv" id="imgdiv"></div>
+  </header>
+  <nav>
+    <!-- seletor de generos-->
+    <select name="Generos" id="Generos">
+      <option value="Generos">Gêneros</option>
+      <option value="1">FEMININO</option>
+      <option value="2">MASCULINO</option>
+      <option value="3">ACESSÓRIOS</option>
+    </select>
+    <select id="categoria">
+      <option value="categoria">CATEGORIAS</option>
+    </select>
+    <select id="colecoes">
+      <option value="colecoes">COLEÇÕES</option>
+    </select>
+  </nav>
+  <main>
+    <ul id="produtos">
+    </ul>
+  </main>
+  <footer>
+    <input type="button" value="admin" id="admin" onclick="submit()">
+  </footer>
+
   <script>
-      function teste(){
-        window.location.href = "admin.html"
-      }
+    function submit(){
+  window.location.href="login.html"
+}
   </script>
 </body>
 </html>

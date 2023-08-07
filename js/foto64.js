@@ -16,7 +16,8 @@ function converterImagem(){
 
       var  img = document.createElement("img")
       img.src = imagemBase64;
-      document.getElementById("apresentarimg").innerHTML = img.outerHTML
+      img.id = "imgP"
+      document.getElementById("imgPrincipal").innerHTML = img.outerHTML
 
      }
      //ler o conteudo

@@ -3,26 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionart</title>
-
-  
+  <title>Document</title>
 </head>
+<link rel="stylesheet" href="css/adicionar.css">
+<script type="module" src="js/firebaseEnviar.js"></script>
+<script src="js/foto64.js"></script>
+
 <body>
+  <form id="dados">
+    <div id="imgPrincipal"></div>
+    <input type="file" id="fotoU" name="fotoU" accept="image/*" onchange="converterImagem()">
+    <input type="text" id="fotoP" name="fotoP" ><br>
+    <input type="text" id="name" required placeholder="name"><br>
+   <select name="generos" id="generos">
+    <option value="generos">Gêneros</option>
+    <option value="masculine">Masculine</option>
+    <option value="feminine"> Feminine</option>
+   </select>
+    <!--CATEGORIAS-->
+    <select name="categorias" id="categorias">
+      <option value="categorias">CATEGORIAS</option>
+      <option value="acessorios">ACESSORIOS</option>
+      <option value="babydollepijamas">BABYDOLL E PIJAMAS</option>
+      <option value="calcinhas">CALCINHAS</option>
+      <option value="camisolaserobes">CAMISOLAS E ROBES</option>
+      <option value="conjuntos">CONJUNTOS</option>
+      <option value="cuecas">CUECAS</option>
+      <option value="meias">MEIAS</option>
+      <option value="sutias">SUTIÂS</option>
+      <option value="body">BODY</option>
+      <option value="hobby">HOBBY</option>
+      <option value="basico">BÁSICO</option>
+      <option value="sembojo">SEM BOJO</option>
+    </select>
+    <!--COLEÇÕES-->
+    <select name="colecoes" id="colecoes">
+      <option value="colecoes">COLEÇÕES</option>
+      <option value="conjuntos">CONJUNTOS</option>
+      <option value="camisolas">CAMISOLAS</option>
+      <option value="babydolls">BABYDOLLS</option>
+      <option value="avulso">AVULSO</option>
+      <option value="plussize">PLUS SIZE</option>
+      <option value="bodys">BODY´S</option>
+      <option value="acessorios">ACESSORIOS</option>
+    </select><br>
+     <input type="number" id="precos" placeholder="precos"required>
+     <input type="text" id="cor" required placeholder="cor"><br>
+
+    <br>
+   <button type="submit">vvvv</button>
+  </form>
   
-  <div>
-    <form id="jsonForm">
-      <input type="text" id="idP" name="idP" readonly><br>
-      <input type="text" id="nomeP" name="nomeP" placeholder="nome"><br>
-      <input type="file" id="fotoU" name="fotoU" accept="image/*" onchange="converterImagem()"> <br>
-      <input type="text" id="fotoP" name="fotoP"  readonly ><br>
-      <textarea id="descricaoP" name="descricaoP" placeholder="descriçâo"></textarea><br>
-      <input type="text" id="tamanhoP" name="tamanhoP" placeholder="tamanhoP"><br>
-      <input type="submit" value="Salvar">
-    </form>
-    <div id="apresentarimg"></div>
-     
-  </div>
-  <script type="module" src="adicionar.js" ></script>
-  <script src="foto64.js"></script>
 </body>
 </html>
